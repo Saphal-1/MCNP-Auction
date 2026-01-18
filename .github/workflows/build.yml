@@ -1,20 +1,20 @@
 name: Build Plugin
-on: [push] # This runs the build every time you save code
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4 # Updated to v4
       - name: Set up Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4 # Updated to v4 for consistency
         with:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
         run: mvn clean package
       - name: Upload JAR
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # Updated to v4 (Fixes the error)
         with:
           name: ItemScanner-Jar
           path: target/*.jar
